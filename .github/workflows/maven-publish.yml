@@ -27,8 +27,11 @@ jobs:
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+      
+      # Passo 5: Upload de artefatos (arquivos gerados pelo Maven e pacotes)
+    - name: Upload Maven build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: datechooser-${{ github.ref_name }}   # Nome único com ID da execução
+        path: |
+          target/*.jar
