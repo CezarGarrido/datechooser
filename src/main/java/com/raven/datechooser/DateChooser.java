@@ -66,7 +66,7 @@ public class DateChooser extends JPanel {
     private String[] getListMonth() {
         String months[] = (String[]) UIManager.get("DateChooser.listMonth");
         if (months == null) {
-            return new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+            return new String[]{"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
         } else {
             return months;
         }
@@ -75,7 +75,7 @@ public class DateChooser extends JPanel {
     private String[] getListDay() {
         String days[] = (String[]) UIManager.get("DateChooser.listDay");
         if (days == null) {
-            return new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fir", "Sat"};
+            return new String[]{"Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"};
         } else {
             return days;
         }
