@@ -4,17 +4,17 @@
 name: Maven Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 11
@@ -22,7 +22,6 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
     - name: Build with Maven
@@ -32,6 +31,6 @@ jobs:
     - name: Upload Maven build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: datechooser-${{ github.ref_name }}   # Nome único com ID da execução
+        name: datechooser   # Nome único com ID da execução
         path: |
           target/*.jar
